@@ -1,0 +1,189 @@
+/* variáveis */
+:root{
+    --color-light:#ffffff;
+    --color-dark:#000000;
+    --color-fiap:#dc143c;
+    --transition:.5s;
+}
+
+/* começar restaurando o css */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+/* Regras sempre aplicadas  */
+ul, ol{
+    list-style: none;
+}
+
+a{
+    color: var(--color-light);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover{
+    color: var(--color-fiap);
+}
+
+img{
+    /* Padronizar o tamanho das imagens, colocamos para ocupar 100% do espaço onde ela estiver */
+    max-width: 100%;
+    display: block;
+}
+/* Fim das regras sempre aplicadas  */
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to top, rgba(0.0.0, .8), rgba(4, 34, 93, 0.3)),
+    url(../images/pexels-felix-mittermeier-957002.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
+
+.header-page{
+    width: 100%;
+    height: 100px;
+    padding: 0 20px;
+    color: var(--color-light);
+    display: flex;
+    /* arrumar menu */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+}
+
+.header-menu ol{
+    display: flex;
+    gap: 20px;
+}
+
+.hero{
+    width: 100%;
+    height: calc(100vh - 100px);
+    color: var(--color-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.hero h2{
+    font-size: 5vmin;
+}
+
+.hero h3{
+    font-size: 4vmin;
+}
+
+.btn{
+     border: 1px solid var(--color-fiap);
+     padding: 8px 30px;
+     background-color: var(--color-fiap);
+     border-radius: 70px;   
+}
+
+.btn:hover{
+    background-color: transparent;
+}
+
+/* cards */
+.cards{
+    width: 100%;
+    /* para arrumar o problema de explodir a div, caso o conteúdo seja maior que o seu tamanho */
+    min-height: 100vh;
+    /* gerou uma parte em branco na tela */
+    /* para centralizar */
+    text-align: center;
+}
+
+.cards h2{
+    /* espaçar o titulo dessa parte do container já criado */
+    margin: 50px 0;
+    font-size: 3vw; /*diminui o tamanho do texto junto com o tamanho da tela */
+}
+
+.card-list{
+    width: 80%;
+    /* height: 500px; */
+    
+    /*centralizar a div sem flex - pega dos 80% de tamanho, depois pela mergem auto vai ser colocado automaticamente*/
+    margin: 20px auto;
+    /* Começar a arrumar o conteúdo da div, quando aplicamos o flex - o padrão é todo o conteúdo ficar um ao lado do outro */
+    display: flex;
+    /* propriedade do flex que quebra o conteúdo */
+    flex-wrap: wrap;
+    /* space-evenly - mesmo espaçamento */
+    justify-content: space-evenly; 
+    /* gap */
+    row-gap: 20px;
+}
+
+
+.card-item{
+    width: 40%;
+
+    /* centralizar o conteúdo - flex para posicionar de forma igual*/
+    display: flex; /* tudo vai ficar um do lado do outro*/
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    /*espaço entre os conteúdos*/ 
+    gap:20px;
+    padding: 40px 20px;
+    /* primeiro valor parte esquerda, segundo valor parte inferior */
+    box-shadow: 1px 1px 30px #ccc;
+    border-radius: 7px;
+    transition: .5s;
+}
+
+/* Regra para quando passar o ponteiro do mouse pelos cards */
+.card-item:hover{
+    /* transformar o tamanho do elemento */
+     transform: scale(1.05);  /*--> mais antigo*/
+    /* scale: 1.1;  */
+}
+
+.card-item img{
+    width: 80%;
+    border-radius: 7px;
+}
+
+.card-item h4{
+    /* função que trabalha com valor minímo, aceitável e máximo */
+    font-size: clamp(3vmin, 22px, 4vmin);
+}
+
+.card-item p {
+    width: 80%;
+    /* propriedade para organizar (padronizar) o tamanho das linhas */
+    text-wrap: balance;
+    /* altura da linha para melhor leitura do usuário */
+    line-height: 1.6;
+}
+
+/* deixar responsivo - a partir de 1024px, ele irá sofrer alterações */
+/* quando a tela for menor que 1024 - 1 coluna para os cards */
+/* pensando no responsivo */
+/* max-width - tamanho máximo de 1024px, se for maior vai ser ignorado */
+/* começar a evitar usar px */
+@media(max-width:1024px /*ou (width <=1024px)*/ ){
+    /* arrumar menu - flex-wrap foi colocado para quebrar, aqui no media foi ajustado para que ficasse  em column, alinhado no centro e com um espaçamento gap de 10px */
+    .header-page{
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+    .card-item{
+        /* colocar as regras que irá ser alterada quando estiver na tela especificada */
+        width: 80%;
+    }
+}
+
